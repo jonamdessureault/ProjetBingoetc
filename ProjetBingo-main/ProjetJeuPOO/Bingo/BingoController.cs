@@ -32,8 +32,6 @@ namespace ProjetJeuPOO.Bingo
             this.PartieEnCours = true;
             boulier.fillBoulier();
             PartiesJouees++;
-            Console.WriteLine("COOL");
-            MenuBingo();
         }
 
         public void RefairePartie()
@@ -60,6 +58,7 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("4- Tirez une boule");
             Console.WriteLine("5- Fin de partie");
             string choixBingo = Console.ReadLine();
+            ChoixBingo(choixBingo);
         }
 
         public void ChoixBingo(string choix)

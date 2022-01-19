@@ -50,6 +50,10 @@ namespace ProjetJeuPOO.Bingo
 
         public void AfficherCartes(string choix)
         {
+            string B = "B", I = "I", N = "N", G = "G", O = "O";
+            Console.WriteLine("Carte du joueur numéro {0}", choix);
+            Console.WriteLine("---------------------------------------------------------------");
+            Console.WriteLine("{0,4} {1,4} {2,4} {3,4} {4,4} ", B, I, N, G, O);
         }
 
         public void CreerCartes()
