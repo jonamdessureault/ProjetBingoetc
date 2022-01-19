@@ -8,7 +8,11 @@ namespace ProjetJeuPOO.Bingo
 {
     class Boulier : IBingoBoulier
     {
+        private int[,] carteAnnonceur = new int[15, 5];
         private List<BingoBall> Boules;
+        private Random random = new Random();
+
+        public Random Random { get => random; set => random = value; }
 
         public Boulier()
         {
@@ -20,9 +24,43 @@ namespace ProjetJeuPOO.Bingo
             throw new NotImplementedException();
         }
 
+        public void fillBoulier()
+        {
+            for (int i = 1; i <= 15; i++)
+            {
+                BingoBall B = new BingoBall('B', i);
+                add(B);
+            }
+
+
+            for (int i = 16; i <= 30; i++)
+            {
+                BingoBall I = new BingoBall('I', i);
+                add(I);
+            }
+
+            for (int i = 31; i <= 45; i++)
+            {
+                BingoBall N = new BingoBall('N', i);
+                add(N);
+            }
+
+            for (int i = 46; i <= 60; i++)
+            {
+                BingoBall G = new BingoBall('G', i);
+                add(G);
+            }
+
+            for (int i = 61; i <= 75; i++)
+            {
+                BingoBall O = new BingoBall('O', i);
+                add(O);
+            }
+        }
+
         public void restartBoulier()
         {
-            throw new NotImplementedException();
+            fillBoulier();
         }
 
         public void add(BingoBall element)
@@ -62,9 +100,48 @@ namespace ProjetJeuPOO.Bingo
 
         }
 
-        public void TirezBoule()
+        public void TirerBoule()
         {
 
+            int index = Random.Next(Boules.Count);
+            BingoBall ball = Boules[index];
+            Boules.RemoveAt(index);
+            RemplirCarteA(ball);
+            Console.WriteLine("Boule tirée :{0}", ball.Number);
+            BingoController.AppuyerEnter();
+        }
+
+        public void RemplirCarteA(BingoBall ball)
+        {
+            int j;
+            int i;
+                    if(ball.Letter == 'B')
+                    { 
+                        j = 0;
+                        i = ball.Number - 1;
+                    }
+                    else if(ball.Letter == 'I')
+                    {
+                        j = 1;
+                        i = ball.Number - 16;
+                    }
+                    else if(ball.Letter == 'N')
+                    {
+                        j = 2;
+                        i = ball.Number - 31;
+                    }
+                    else if(ball.Letter == 'G')
+                    {
+                        j = 3;
+                        i = ball.Number - 46;
+                    }
+                    else
+                    {
+                        j = 4;
+                        i = ball.Number - 61; 
+                    }
+
+                    carteAnnonceur[i, j] = ball.Number;
         }
 
         public void FinPartie()
@@ -82,7 +159,6 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("5- Fin de partie");
             string choixBingo = Console.ReadLine();
             ChoixMenuBingo(choixBingo);
-
         }
 
         public void ChoixMenuBingo(string choix)
@@ -102,7 +178,7 @@ namespace ProjetJeuPOO.Bingo
                     break;
 
                 case "4":
-                    TirezBoule();
+                    TirerBoule();
                     break;
 
                 case "5":
@@ -112,8 +188,23 @@ namespace ProjetJeuPOO.Bingo
                 default:
                     Console.WriteLine("Veuillez entrer un choix valide");
                     break;
-
             }
+
+
+        }
+
+        public void AfficherCarteA()
+        {
+            string B = "B", I = "I", N = "N", G = "G", O = "O";
+            Console.WriteLine("Carte de l'annonceur: ");
+            Console.WriteLine("-------------------------------------------------------------------------------------------");
+            Console.WriteLine("{0,15} {1,15} {2,15} {3,15} {4,15} ", B, I, N, G, O);
+
+            for (int i = 0; i < 15; i++)
+            {
+                Console.WriteLine("{0,15} {1,15} {2,15} {3,15} {4,15}", carteAnnonceur[i, 0], carteAnnonceur[i, 1], carteAnnonceur[i, 2], carteAnnonceur[i, 3], carteAnnonceur[i, 4]);
+            }
+            BingoController.AppuyerEnter();
         }
     }
 }
