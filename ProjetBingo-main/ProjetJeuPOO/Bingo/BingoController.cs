@@ -48,16 +48,16 @@ namespace ProjetJeuPOO.Bingo
             switch (choix)
             {
                 case "1":
-                    listeCards[1].bingoCard.AfficherCartes();
+                    listeCards[1].AfficherCartes();
                     break;
                 case "2":
-                    listeCards[2].bingoCard.AfficherCartes();
+                    listeCards[2].AfficherCartes();
                     break;
                 case "3":
-                    listeCards[3].bingoCard.AfficherCartes();
+                    listeCards[3].AfficherCartes();
                     break;
                 case "4":
-                    listeCards[4].bingoCard.AfficherCartes();
+                    listeCards[4].AfficherCartes();
                     break;
                 default:
                     Console.WriteLine("Nombre de cartes invalide");
@@ -66,7 +66,7 @@ namespace ProjetJeuPOO.Bingo
 
         }
 
-        public void MarquerCartes()
+    /*   public void MarquerCartes()
         {
             foreach (BingoCard card in listeCards)
             {
@@ -76,8 +76,9 @@ namespace ProjetJeuPOO.Bingo
                 }
             }
         }
+    */
 
-        public void GagnerPartie()
+       /* public void GagnerPartie()
         {
             foreach (BingoCard card in listeCards)
             {
@@ -109,10 +110,10 @@ namespace ProjetJeuPOO.Bingo
                     }
                 }
             }
-        }
+        }*/
         public void ProcessWin()
-        {
-            Console.WriteLine("BINGO sur la carte {0}",);
+        { string chien = "chien";
+            Console.WriteLine("BINGO sur la carte {0}",chien);
             partiesGagnees++;
             RefairePartie();
         }
