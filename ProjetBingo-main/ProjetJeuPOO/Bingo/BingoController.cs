@@ -9,18 +9,20 @@ namespace ProjetJeuPOO.Bingo
         private int partiesJouees = 0;
         private int partiesGagnees = 0;
         Boulier boulier = new Boulier();
-        BingoCard bingoCard = new BingoCard();
+        private List<BingoCard> listeCards;
         private bool partieEnCours = false;
         
         // Arraylist ou list de bingocard
 
         public BingoController()
         {
+
         }
 
         public int PartiesJouees { get => partiesJouees; set => partiesJouees = value; }
         public int PartiesGagnees { get => partiesGagnees; set => partiesGagnees = value; }
         public bool PartieEnCours { get => partieEnCours; set => partieEnCours = value; }
+        internal List<BingoCard> ListeCards { get => ListeCards; set => ListeCards = value; }
 
         public static void AppuyerEnter()
         {
@@ -32,6 +34,36 @@ namespace ProjetJeuPOO.Bingo
             this.PartieEnCours = true;
             boulier.fillBoulier();
             PartiesJouees++;
+            ChoixNombre();
+        }
+        public void NombreCartes()
+        {
+            Console.WriteLine("Veuillez inscrire le numéro de la carte à consulter");
+            string nombreCarte = Console.ReadLine();
+            ChoixCartes(nombreCarte);
+        }
+        public void ChoixCartes(string choix)
+        {
+
+            switch (choix)
+            {
+                case "1":
+                    listeCards[1].bingoCard.AfficherCartes();
+                    break;
+                case "2":
+                    listeCards[2].bingoCard.AfficherCartes();
+                    break;
+                case "3":
+                    listeCards[3].bingoCard.AfficherCartes();
+                    break;
+                case "4":
+                    listeCards[4].bingoCard.AfficherCartes();
+                    break;
+                default:
+                    Console.WriteLine("Nombre de cartes invalide");
+                    break;
+            }
+
         }
 
         public void RefairePartie()
@@ -69,7 +101,7 @@ namespace ProjetJeuPOO.Bingo
                     NouvellePartie();
                     break;
                 case "2":
-                    bingoCard.NombreCartes();
+                    NombreCartes();
                     break;
                 case "3":
                     boulier.AfficherCarteA();
@@ -83,41 +115,18 @@ namespace ProjetJeuPOO.Bingo
             }
         }
 
-        public void ChoixCartes(string choix)
+        public void ChoixNombre()
         {
             Console.WriteLine("Combien de cartes désirez-vous jouer ? (4 max)");
+            int choixCarte = Convert.ToInt32(Console.ReadLine());
 
-            switch(choix)
+            for (int i = 0; i < choixCarte; i++)
             {
-                case "1":
-                    bingoCard.CreerCartes();
-                    break;
-
-                case "2":
-                    bingoCard.CreerCartes();
-                    bingoCard.CreerCartes();
-                    break;
-
-                case "3":
-                    bingoCard.CreerCartes();
-                    bingoCard.CreerCartes();
-                    bingoCard.CreerCartes();
-                    break;
-
-                case "4":
-                    bingoCard.CreerCartes();
-                    bingoCard.CreerCartes();
-                    bingoCard.CreerCartes();
-                    bingoCard.CreerCartes();
-                    break;
-
-                default:
-                    Console.WriteLine("Veuillez choisir un chiffre entre 1 et 4");
-                    break;
+                BingoCard bingoCard = new BingoCard();
+                listeCards = new List<BingoCard>();
+                listeCards.Add(bingoCard);
             }
 
         }
-
-
     }
  }

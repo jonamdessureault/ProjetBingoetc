@@ -9,44 +9,21 @@ namespace ProjetJeuPOO.Bingo
 {
     class BingoCard
     {
-        int[,] carteJoueur = new int[5, 5];       
+        private int[,] carteJoueur = new int[5, 5];
 
         public BingoCard()
         {
-
-        }
-
-        public void NombreCartes()
-        {
-            Console.WriteLine("Veuillez inscrire le numéro de la carte à consulter");
-            string nombreCarte = Console.ReadLine();
-            ChoixCartes(nombreCarte);
-        }
-        public void ChoixCartes(string choix)
-        {
-
-            switch(choix)
+            for(int i = 0; i < 5; i++)
             {
-                case "1":
-                    Console.WriteLine("Carte 1");
-                    break;
-                case "2":
-                    Console.WriteLine("Carte 2");
-                    break;
-                case "3":
-                    Console.WriteLine("Carte 3");
-                    break;
-                case "4":
-                    Console.WriteLine("Carte 4");
-                    break;
-                default: Console.WriteLine("Nombre de cartes invalide");
-                    break;
+                for(int j = 0; j < 5; j++)
+                {
+                    Random random = new Random();
+                    int numero = random.Next(75);
+                    CarteJoueur[i, j] = numero;                }
             }
-
-            AfficherCartes(choix);
-
         }
 
+        public int[,] CarteJoueur { get => carteJoueur; set => carteJoueur = value; }
 
         public void AfficherCartes(string choix)
         {
@@ -54,12 +31,12 @@ namespace ProjetJeuPOO.Bingo
             Console.WriteLine("Carte du joueur numéro {0}", choix);
             Console.WriteLine("---------------------------------------------------------------");
             Console.WriteLine("{0,4} {1,4} {2,4} {3,4} {4,4} ", B, I, N, G, O);
+
+            for (int i = 0; i < 5; i++)
+            {
+                Console.WriteLine("{0,5} {1,5} {2,5} {3,5} {4,5}", carteJoueur[i, 0], carteJoueur[i, 1], carteJoueur[i, 2], carteJoueur[i, 3], carteJoueur[i, 4]);
+            }
+
         }
-
-        public void CreerCartes()
-        {
-
-        }
-
     }
 }
