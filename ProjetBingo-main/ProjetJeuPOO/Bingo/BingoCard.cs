@@ -13,13 +13,15 @@ namespace ProjetJeuPOO.Bingo
 
         public BingoCard()
         {
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
-                for(int j = 0; j < 5; j++)
+                for (int j = 0; j < 5; j++)
                 {
                     Random random = new Random();
                     int numero = random.Next(75);
-                    CarteJoueur[i, j] = numero;                }
+                    CarteJoueur[i, j] = numero;
+                    CarteJoueur[2, 2] = 0;
+                }
             }
         }
 

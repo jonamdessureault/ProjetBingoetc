@@ -66,6 +66,56 @@ namespace ProjetJeuPOO.Bingo
 
         }
 
+        public void MarquerCartes()
+        {
+            foreach (BingoCard card in listeCards)
+            {
+                if(boulier.CarteAnnonceur[i,j] = carteJoueur[i,j])
+                {
+                    carteJoueur[i, j] = 0;
+                }
+            }
+        }
+
+        public void GagnerPartie()
+        {
+            foreach (BingoCard card in listeCards)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if (carteJoueur[0, j] = 0)
+                        {
+                            ProcessWin();
+                        }
+                        else if (carteJoueur[1, j] = 0)
+                        {
+                            ProcessWin();
+                        }
+                        else if (carteJoueur[2, j] = 0)
+                        {
+                            ProcessWin();
+                        }
+                        else if (carteJoueur[3, j] = 0)
+                        {
+                            ProcessWin();
+                        }
+                        else if (carteJoueur[4, j] = 0)
+                        {
+                            ProcessWin();
+                        }
+
+                    }
+                }
+            }
+        }
+        public void ProcessWin()
+        {
+            Console.WriteLine("BINGO sur la carte {0}",);
+            partiesGagnees++;
+            RefairePartie();
+        }
         public void RefairePartie()
         {
             Console.WriteLine("Voulez-vous refaire une partie ? O/N");
@@ -119,11 +169,11 @@ namespace ProjetJeuPOO.Bingo
         {
             Console.WriteLine("Combien de cartes désirez-vous jouer ? (4 max)");
             int choixCarte = Convert.ToInt32(Console.ReadLine());
+            listeCards = new List<BingoCard>();
 
             for (int i = 0; i < choixCarte; i++)
             {
                 BingoCard bingoCard = new BingoCard();
-                listeCards = new List<BingoCard>();
                 listeCards.Add(bingoCard);
             }
 
