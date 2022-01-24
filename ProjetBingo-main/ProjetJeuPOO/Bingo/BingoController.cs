@@ -11,8 +11,6 @@ namespace ProjetJeuPOO.Bingo
         Boulier boulier = new Boulier();
         private List<BingoCard> listeCards;
         private bool partieEnCours = false;
-        
-        // Arraylist ou list de bingocard
 
         public BingoController()
         {
@@ -98,7 +96,9 @@ namespace ProjetJeuPOO.Bingo
                 {
                     if (card.CarteJoueur[i, 0] == 0 && card.CarteJoueur[i, 1] == 0 && card.CarteJoueur[i, 2] == 0 && card.CarteJoueur[i, 3] == 0 && card.CarteJoueur[i, 4] == 0)
                     {
+                       
                         ProcessWin();
+                        card.AfficherCartes();
                     }
                 }
 
@@ -106,17 +106,23 @@ namespace ProjetJeuPOO.Bingo
                 {
                     if (card.CarteJoueur[0, j] == 0 & card.CarteJoueur[1, j] == 0 & card.CarteJoueur[2, j] == 0 & card.CarteJoueur[3, j] == 0 & card.CarteJoueur[4, j] == 0)
                     {
+                        
                         ProcessWin();
+                        card.AfficherCartes();
                     }
                 }
 
                 if (card.CarteJoueur[0, 0] == 0 & card.CarteJoueur[1, 1] == 0 & card.CarteJoueur[2, 2] == 0 & card.CarteJoueur[3, 3] == 0 & card.CarteJoueur[4, 4] == 0)
                 {
+                    
                     ProcessWin();
+                    card.AfficherCartes();
                 }
                 else if (card.CarteJoueur[0, 4] == 0 & card.CarteJoueur[1, 3] == 0 & card.CarteJoueur[2, 2] == 0 & card.CarteJoueur[3, 2] == 0 & card.CarteJoueur[4, 0] == 0)
                 {
+                    
                     ProcessWin();
+                    card.AfficherCartes();
                 }
             }
         }
@@ -186,7 +192,7 @@ namespace ProjetJeuPOO.Bingo
 
             for (int i = 0; i < choixCarte; i++)
             {
-                BingoCard bingoCard = new BingoCard();
+                BingoCard bingoCard = new BingoCard(i+1);
                 listeCards.Add(bingoCard);
             }
 

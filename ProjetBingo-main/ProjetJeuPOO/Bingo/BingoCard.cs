@@ -10,9 +10,12 @@ namespace ProjetJeuPOO.Bingo
     class BingoCard
     {
         private int[,] carteJoueur = new int[5, 5];
+        private int numeroCarte;
 
-        public BingoCard()
+        public BingoCard(int numeroCarte)
         {
+            this.numeroCarte = numeroCarte;
+            
             List<int> listeBallesJoueur = new List<int>();
             Random random = new Random();
             for (int i = 0; i < 5; i++)
@@ -57,6 +60,7 @@ namespace ProjetJeuPOO.Bingo
         }
 
         public int[,] CarteJoueur { get => carteJoueur; set => carteJoueur = value; }
+        public int NumeroCarte { get => numeroCarte; set => numeroCarte = value; }
 
         public void AfficherCartes()
         {
